@@ -119,7 +119,8 @@ router.get('/week', (req: Request, res: Response) => {
 router.get('/retention', (req: Request, res: Response) => {
 
   let {dayZero} = req.query;
-  dayZero = new Date(new Date(+dayZero).toDateString()).getTime();
+  const hour = 3600000;
+  dayZero = new Date(new Date(+dayZero + 6 * hour).toDateString()).getTime();
   let allRetentions = [];
   const week = 604800000;
   let start = dayZero;
