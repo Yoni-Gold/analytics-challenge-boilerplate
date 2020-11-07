@@ -50,7 +50,8 @@ describe("main test", () => {
     console.log(sessionsByDays);
 
     expect(sessionsByDays.length).toBe(7)
-    expect(sessionsByDays.reduce((sum: number, day: {date: string; count: number}) => sum += day.count, 0)).toBe(145)
+    expect(sessionsByDays.reduce((sum: number, day: {date: string; count: number}) => sum += day.count, 0)).toBe(145
+      )
     expect(sessionsByDays[0].count).toBe(19);
 
     const { body: sessionsByDays2 } = await request(app).get("/events/by-days/7").expect(200)

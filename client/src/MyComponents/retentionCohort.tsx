@@ -69,7 +69,7 @@ const RetentionCohort: React.FC = () => {
   const createGrid = () => {
     return (<Table>
         <tr><TD>weeks: </TD>{info.map((week: any , index: number) => <TD>week {index}</TD>)}</tr>
-        {info.map((week: any) => <tr><TD>{new Date(week.start).toDateString()} to {new Date(week.end).toDateString()}</TD>{week.weeklyRetention.map((r: number) => <TD level={r}>{r}%</TD>)}</tr>)}
+        {info.map((week: any) => <tr><TD>{week.start} to {week.end}</TD>{week.weeklyRetention.map((r: number) => <TD level={r}>{r}%</TD>)}</tr>)}
     </Table>);
     
   };
