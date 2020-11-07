@@ -156,7 +156,7 @@ router.get('/retention', (req: Request, res: Response) => {
       newUsers: signup.length, 
       weeklyRetention: retention,
       start: new Date(dates[0]).toDateString(),
-      end: dates[1] > Date.now() ? Date.now() : new Date(dates[1]).toDateString()
+      end: dates[1] > Date.now() ? new Date(Date.now()).toDateString() : new Date(dates[1]).toDateString()
     }
   }
 
