@@ -136,10 +136,6 @@ router.get('/retention', (req: Request, res: Response) => {
 
     while (start < new Date(new Date()).getTime())
     {
-      if (start > new Date(2020,9,25).getTime() && start < new Date(2020,9,25).getTime() + week)
-      {
-        end -= 2 * hour;
-      }
       let data = db.get('events').filter(event => event.date >= start && event.date < end).map('distinct_user_id').value();
 
       for (let i = 0; i < signup.length; i++)
@@ -167,6 +163,10 @@ router.get('/retention', (req: Request, res: Response) => {
 
   while (start < new Date(new Date().toDateString()).getTime())
   {
+    if (start > new Date(2020,9,25).getTime() && start < new Date(2020,9,25).getTime() + week)
+    {
+      end -= 2 * hour;
+    }
     allRetentions.push(getOneWeekRetention(start , end , allRetentions.length));
     start = end;
     end += week;
