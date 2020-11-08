@@ -138,7 +138,7 @@ router.get('/retention', (req: Request, res: Response) => {
     {
       if (start > new Date(2020,9,25).getTime() && start < new Date(2020,9,25).getTime() + week)
       {
-        end += hour;
+        end -= hour;
       }
       let data = db.get('events').filter(event => event.date >= start && event.date < end).map('distinct_user_id').value();
 
