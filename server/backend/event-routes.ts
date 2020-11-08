@@ -165,7 +165,7 @@ router.get('/retention', (req: Request, res: Response) => {
   {
     if (start > new Date(2020,9,25).getTime() && start < new Date(2020,9,25).getTime() + week)
     {
-      end -= 24 * hour;
+      end -= (30 * hour);
     }
     allRetentions.push(getOneWeekRetention(start , end , allRetentions.length));
     start = end;
