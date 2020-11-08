@@ -134,8 +134,12 @@ router.get('/retention', (req: Request, res: Response) => {
     start = end;
     end += week;
 
-    while (start < new Date(new Date(Date.now() + 6 * hour).toDateString()).getTime())
+    while (start < new Date(new Date()).getTime())
     {
+      if (start > new Date(2020,9,25).getTime() && start < new Date(2020,9,25).getTime() + week)
+      {
+        start += hour;
+      }
       let data = db.get('events').filter(event => event.date >= start && event.date < end).map('distinct_user_id').value();
 
       for (let i = 0; i < signup.length; i++)
