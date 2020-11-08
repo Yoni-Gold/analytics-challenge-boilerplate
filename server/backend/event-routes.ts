@@ -145,7 +145,6 @@ router.get('/retention', (req: Request, res: Response) => {
           counter++;
         }
       }
-      console.log(counter , signup.length);
       retention.push(Math.round((counter / signup.length) * 100));
       counter = 0;
       start = end;
@@ -163,9 +162,12 @@ router.get('/retention', (req: Request, res: Response) => {
 
   while (start < new Date(new Date().toDateString()).getTime())
   {
-    if (start > new Date(2020,9,25).getTime() && start < new Date(2020,9,25).getTime() + week)
+    console.log(new Date(start).toDateString() , new Date(end).toDateString());
+    
+    if (new Date(start).toDateString() === new Date(2020,9,25).toDateString())
     {
-      end -= (30 * hour);
+      end -= (2 * hour);
+      console.log('happened');
     }
     allRetentions.push(getOneWeekRetention(start , end , allRetentions.length));
     start = end;
